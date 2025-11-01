@@ -1,4 +1,4 @@
-# EXE-CNN: Malware Detection using Convolutional Neural Networks
+# EXE-Binary: Malware Detection using Convolutional Neural Networks
 
 A deep learning project for detecting malicious executable files using Convolutional Neural Networks (CNN). This project classifies EXE binaries as either **Benign** or **Malicious** by converting them to images and applying image classification techniques.
 
@@ -9,7 +9,7 @@ This project implements a CNN-based malware detection system that achieves **98.
 ## Project Structure
 
 ```
-exe-cnn/
+exe-binary/
 ├── app/
 │   └── main.py                 # Main api file
 ├── artifacts/
