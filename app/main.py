@@ -76,7 +76,6 @@ class MalwareClassifier(nn.Module):
 model = None
 
 def load_model():
-    """Load the trained model"""
     global model
     if model is None:
         if not MODEL_PATH.exists():
@@ -95,8 +94,6 @@ transform = transforms.Compose([
 
 def binary_to_image(file_bytes: bytes) -> Image.Image:
     byte_array = np.frombuffer(file_bytes, dtype=np.uint8)
-    
-
     num_bytes = len(byte_array)
 
     width = 256
@@ -111,9 +108,7 @@ def binary_to_image(file_bytes: bytes) -> Image.Image:
         byte_array = byte_array[:width * height]
     
     image_2d = byte_array.reshape((height, width))
-    
     image = Image.fromarray(image_2d, mode='L')
-    
     image = image.convert('RGB')
     
     return image
@@ -184,14 +179,12 @@ async def predict(file: UploadFile = File(...)):
 async def predict_image(file: UploadFile = File(...)):
     try:
         model = load_model()
-        
         file_bytes = await file.read()
         
         if len(file_bytes) == 0:
             raise HTTPException(status_code=400, detail="Empty file provided")
         
         image = Image.open(io.BytesIO(file_bytes)).convert('RGB')
-        
         image_tensor = transform(image).unsqueeze(0).to(DEVICE)
         
         with torch.no_grad():
