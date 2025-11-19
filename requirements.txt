@@ -1,8 +1,8 @@
-fastapi==0.104.1
+fastapi==0.121.2
 uvicorn[standard]==0.24.0
 python-multipart==0.0.6
-torch>=2.0.0
-torchvision>=0.15.0
-numpy>=1.24.0
-Pillow>=10.0.0
-
+pydantic-settings==2.12.0
+torch==2.5.1+cu121
+torchvision==0.20.1+cu121
+numpy==1.26.4
+Pillow==10.1.0
